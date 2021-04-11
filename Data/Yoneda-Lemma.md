@@ -22,7 +22,7 @@
 1. Objects：$a,\ b \in obj(C)$ <br/>
 2. Morphisms：$f : a \to b$，$g : a \to b$，$h : a \to b$
 
-![](./Yoneda-Lemma-1.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-1.png)
 
 ## Hom-functor (Hom-函子)
 
@@ -33,14 +33,14 @@
 
 那么该如何构造出这一概念？对于这一疑问，我们可以先假设有 locally small category $C$ 以及一些 object，例如 $X, A, B \in obj(C)$，然后 对于所有 $X$ 将作为 fixed object，并且分别有 $X$ 到 $A$ 以及 $X$ 到 $B$ 的 hom-sets。那么 (covariant) hom-functor 的样子是这样的：
 
-![](./Yoneda-Lemma-2.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-2.png)
 
 从上图可见，当把 $X$ 给固定住后，object $A$ 将会映射为一个 $Hom(X,\ A)$，$B$ 则被映射为 $Hom(X,\ B)$，所以说只要把其中一边给固定住了 (这里固定了 hom-set 的左侧，而右侧可变的位置是协变位，因此称为 covariant hom-functor)，对于任何可变的 object (这里则指 $A$ 或 $B$)，便可透过 (covariant) hom-functor 被映射成 hom-set 了。
 
 当然，除了 object 以外，我们还需设想 morphisms 的情况。<br/>
 现在设 $A$ 和 $B$ 之间存在 morphism $f$，那么对于 morphisms 而言，被映射至 $Set$ 之后便是这样：
 
-![](./Yoneda-Lemma-3.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-3.png)
 
 即 morphism $f$ 将被映射成 $Hom(X,\ f)$ (这里可以理解为 $Hom(id_X,\ f)$)。
 
@@ -53,7 +53,7 @@
 
 则 $Hom(X, -) : C \to Set$ (或 $h_X$) 被称为 covariant hom-functor，并有如下图表：
 
-![](./Yoneda-Lemma-4.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-4.png)
 
 而 covariant hom-functor 由以下两部分组成：<br/>
 $obj(C) \to obj(Set)$：$\forall A \in obj(C)，有 A \mapsto Hom(X,\ A)$<br/>
@@ -70,7 +70,7 @@ Composition laws：$Hom(X,\ g \circ f) = Hom(X,\ g) \circ Hom(X,\ f)$
 ### Contravariant Hom-functor (逆变 Hom-函子)
 而 contravariant hom-functor，只需把 covariant hom-functor 中 domain (逆变位置) 或 codomain (协变位置) 其中任意一个 category 改为 opposite category，这里我们采用改变逆变位置的 category，即有：
 
-![](./Yoneda-Lemma-5.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-5.png)
 
 ### 定义
 设有 locally small category $C^{op}$，固定 $C$ 下的 object $X$ 为 fixed object，并且有：<br/>
@@ -79,7 +79,7 @@ Composition laws：$Hom(X,\ g \circ f) = Hom(X,\ g) \circ Hom(X,\ f)$
 
 则 $Hom(-, X) : C \to Set$ (或 $h^X$) 被称为 contravariant hom-functor，并有如下图表：
 
-![](./Yoneda-Lemma-6.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-6.png)
 
 而 contravariant hom-functor 由以下两部分组成：<br/>
 $obj(C^{op}) \to obj(Set)$：$\forall A \in obj(C^{op})$，有 $A \mapsto Hom(A,\ X)$<br/>
@@ -104,19 +104,19 @@ Functors：$Hom(-, X) : C^{op} \to Set$，$Hom(X, -) : C \to Set$
 
 那么即有图：
 
-![](./Yoneda-Lemma-7.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-7.png)
 
 而由于 $Hom(X, -)$ 以及 $Hom(-, X)$ 二者皆是从某个 category 中 morphism 至 $Set$，因此该处可构成一 product category (乘积范畴)，即 $C^{op} \times C$，所以有 functor $Hom(-, -) : C^{op} \times C \to Set$：
 
-![](./Yoneda-Lemma-8.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-8.png)
 
 而对于 $Set$ 中 $Hom(f,\ h) : Hom(A,\ B) \to Hom(A',\ B')$，假设固定任意一边的变元为 $id$，那么 morphisms 则为：$Hom(id_A,\ h) : Hom(A, B) \to Hom(A, B')$，$Hom(f,\ id_B) : Hom(A,\ B) \to Hom(A',\ B)$，$Hom(id_{A'},\ h) : Hom(A', B) \to Hom(A', B')$，$Hom(f,\ id_{B'}) : Hom(A,\ B') \to Hom(A',\ B')$，所以会有图：
 
-![](./Yoneda-Lemma-9.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-9.png)
 
 为了证明该图可交换，现在假设有 $g \in Hom(A,\ B)$，那么有：
 
-![](./Yoneda-Lemma-10.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-10.png)
 
 最终得出结论：$g \mapsto h \circ g \circ f : Hom(A,\ B) \to Hom(A',\ B')$，因此该图可交换。
 
@@ -144,13 +144,13 @@ $$ Hom(Hom(X, -),\ F) \cong F(X) $$
 
 首先定义 $A, B \in Obj(C)$，且有态射 $f : A \to B$，以及一个任意的 object $X$，因此对于 category $C$，我们有：
 
-![](./Yoneda-Lemma-11.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-11.png)
 
 因此对于任意 $X$，我们可以定义出 morphism $- : X \to A$ 以及 $f \circ - : X \to B$。
 
 而后考虑到有 functor $Hom(X,\ -) : C \to Set$ 和 $F : C \to Set$，以及有一自然变换 $\alpha : Hom(X, -) \to F$，我们能够得出如下图：
 
-![](./Yoneda-Lemma-12.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-12.png)
 
 所以在 category $Set$ 中，有<br/>
 Objects：$Hom(X,\ A), Hom(X,\ B), F(A), F(B)$<br/>
@@ -162,7 +162,7 @@ Objects：$Hom(X,\ A), Hom(X,\ B), F(A), F(B)$<br/>
 ### 证明
 为了证明米田引理，可以取出 $Hom(X,\ A)$ 中的 identity morphism $id_X$ 作为实例，即 $Hom(X,\ X)$，所以上图将更变为：
 
-![](./Yoneda-Lemma-13.png)
+![](./Yoneda-Lemma/Yoneda-Lemma-13.png)
 
 其中包含了 $id_X \in Hom(X,\ X)$，$u \in F(X)$，$f \in Hom(X,\ B)$ 以及 $\alpha_B\ f \in F(B)$。
 

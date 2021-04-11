@@ -22,7 +22,7 @@
 1. Objects： <img src="https://www.zhihu.com/equation?tex=a,\ b \in obj(C)" alt="a,\ b \in obj(C)" class="ee_img tr_noresize" eeimg="1">  <br/>
 2. Morphisms： <img src="https://www.zhihu.com/equation?tex=f : a \to b" alt="f : a \to b" class="ee_img tr_noresize" eeimg="1"> ， <img src="https://www.zhihu.com/equation?tex=g : a \to b" alt="g : a \to b" class="ee_img tr_noresize" eeimg="1"> ， <img src="https://www.zhihu.com/equation?tex=h : a \to b" alt="h : a \to b" class="ee_img tr_noresize" eeimg="1"> 
 
-![](./Yoneda-Lemma-1.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-1.png)
 
 ## Hom-functor (Hom-函子)
 
@@ -33,14 +33,14 @@
 
 那么该如何构造出这一概念？对于这一疑问，我们可以先假设有 locally small category  <img src="https://www.zhihu.com/equation?tex=C" alt="C" class="ee_img tr_noresize" eeimg="1">  以及一些 object，例如  <img src="https://www.zhihu.com/equation?tex=X, A, B \in obj(C)" alt="X, A, B \in obj(C)" class="ee_img tr_noresize" eeimg="1"> ，然后 对于所有  <img src="https://www.zhihu.com/equation?tex=X" alt="X" class="ee_img tr_noresize" eeimg="1">  将作为 fixed object，并且分别有  <img src="https://www.zhihu.com/equation?tex=X" alt="X" class="ee_img tr_noresize" eeimg="1">  到  <img src="https://www.zhihu.com/equation?tex=A" alt="A" class="ee_img tr_noresize" eeimg="1">  以及  <img src="https://www.zhihu.com/equation?tex=X" alt="X" class="ee_img tr_noresize" eeimg="1">  到  <img src="https://www.zhihu.com/equation?tex=B" alt="B" class="ee_img tr_noresize" eeimg="1">  的 hom-sets。那么 (covariant) hom-functor 的样子是这样的：
 
-![](./Yoneda-Lemma-2.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-2.png)
 
 从上图可见，当把  <img src="https://www.zhihu.com/equation?tex=X" alt="X" class="ee_img tr_noresize" eeimg="1">  给固定住后，object  <img src="https://www.zhihu.com/equation?tex=A" alt="A" class="ee_img tr_noresize" eeimg="1">  将会映射为一个  <img src="https://www.zhihu.com/equation?tex=Hom(X,\ A)" alt="Hom(X,\ A)" class="ee_img tr_noresize" eeimg="1"> ， <img src="https://www.zhihu.com/equation?tex=B" alt="B" class="ee_img tr_noresize" eeimg="1">  则被映射为  <img src="https://www.zhihu.com/equation?tex=Hom(X,\ B)" alt="Hom(X,\ B)" class="ee_img tr_noresize" eeimg="1"> ，所以说只要把其中一边给固定住了 (这里固定了 hom-set 的左侧，而右侧可变的位置是协变位，因此称为 covariant hom-functor)，对于任何可变的 object (这里则指  <img src="https://www.zhihu.com/equation?tex=A" alt="A" class="ee_img tr_noresize" eeimg="1">  或  <img src="https://www.zhihu.com/equation?tex=B" alt="B" class="ee_img tr_noresize" eeimg="1"> )，便可透过 (covariant) hom-functor 被映射成 hom-set 了。
 
 当然，除了 object 以外，我们还需设想 morphisms 的情况。<br/>
 现在设  <img src="https://www.zhihu.com/equation?tex=A" alt="A" class="ee_img tr_noresize" eeimg="1">  和  <img src="https://www.zhihu.com/equation?tex=B" alt="B" class="ee_img tr_noresize" eeimg="1">  之间存在 morphism  <img src="https://www.zhihu.com/equation?tex=f" alt="f" class="ee_img tr_noresize" eeimg="1"> ，那么对于 morphisms 而言，被映射至  <img src="https://www.zhihu.com/equation?tex=Set" alt="Set" class="ee_img tr_noresize" eeimg="1">  之后便是这样：
 
-![](./Yoneda-Lemma-3.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-3.png)
 
 即 morphism  <img src="https://www.zhihu.com/equation?tex=f" alt="f" class="ee_img tr_noresize" eeimg="1">  将被映射成  <img src="https://www.zhihu.com/equation?tex=Hom(X,\ f)" alt="Hom(X,\ f)" class="ee_img tr_noresize" eeimg="1">  (这里可以理解为  <img src="https://www.zhihu.com/equation?tex=Hom(id_X,\ f)" alt="Hom(id_X,\ f)" class="ee_img tr_noresize" eeimg="1"> )。
 
@@ -53,7 +53,7 @@
 
 则  <img src="https://www.zhihu.com/equation?tex=Hom(X, -) : C \to Set" alt="Hom(X, -) : C \to Set" class="ee_img tr_noresize" eeimg="1">  (或  <img src="https://www.zhihu.com/equation?tex=h_X" alt="h_X" class="ee_img tr_noresize" eeimg="1"> ) 被称为 covariant hom-functor，并有如下图表：
 
-![](./Yoneda-Lemma-4.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-4.png)
 
 而 covariant hom-functor 由以下两部分组成：<br/>
  <img src="https://www.zhihu.com/equation?tex=obj(C) \to obj(Set)" alt="obj(C) \to obj(Set)" class="ee_img tr_noresize" eeimg="1"> ： <img src="https://www.zhihu.com/equation?tex=\forall A \in obj(C)，有 A \mapsto Hom(X,\ A)" alt="\forall A \in obj(C)，有 A \mapsto Hom(X,\ A)" class="ee_img tr_noresize" eeimg="1"> <br/>
@@ -70,7 +70,7 @@ Composition laws： <img src="https://www.zhihu.com/equation?tex=Hom(X,\ g \circ
 ### Contravariant Hom-functor (逆变 Hom-函子)
 而 contravariant hom-functor，只需把 covariant hom-functor 中 domain (逆变位置) 或 codomain (协变位置) 其中任意一个 category 改为 opposite category，这里我们采用改变逆变位置的 category，即有：
 
-![](./Yoneda-Lemma-5.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-5.png)
 
 ### 定义
 设有 locally small category  <img src="https://www.zhihu.com/equation?tex=C^{op}" alt="C^{op}" class="ee_img tr_noresize" eeimg="1"> ，固定  <img src="https://www.zhihu.com/equation?tex=C" alt="C" class="ee_img tr_noresize" eeimg="1">  下的 object  <img src="https://www.zhihu.com/equation?tex=X" alt="X" class="ee_img tr_noresize" eeimg="1">  为 fixed object，并且有：<br/>
@@ -79,7 +79,7 @@ Composition laws： <img src="https://www.zhihu.com/equation?tex=Hom(X,\ g \circ
 
 则  <img src="https://www.zhihu.com/equation?tex=Hom(-, X) : C \to Set" alt="Hom(-, X) : C \to Set" class="ee_img tr_noresize" eeimg="1">  (或  <img src="https://www.zhihu.com/equation?tex=h^X" alt="h^X" class="ee_img tr_noresize" eeimg="1"> ) 被称为 contravariant hom-functor，并有如下图表：
 
-![](./Yoneda-Lemma-6.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-6.png)
 
 而 contravariant hom-functor 由以下两部分组成：<br/>
  <img src="https://www.zhihu.com/equation?tex=obj(C^{op}) \to obj(Set)" alt="obj(C^{op}) \to obj(Set)" class="ee_img tr_noresize" eeimg="1"> ： <img src="https://www.zhihu.com/equation?tex=\forall A \in obj(C^{op})" alt="\forall A \in obj(C^{op})" class="ee_img tr_noresize" eeimg="1"> ，有  <img src="https://www.zhihu.com/equation?tex=A \mapsto Hom(A,\ X)" alt="A \mapsto Hom(A,\ X)" class="ee_img tr_noresize" eeimg="1"> <br/>
@@ -104,19 +104,19 @@ Functors： <img src="https://www.zhihu.com/equation?tex=Hom(-, X) : C^{op} \to 
 
 那么即有图：
 
-![](./Yoneda-Lemma-7.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-7.png)
 
 而由于  <img src="https://www.zhihu.com/equation?tex=Hom(X, -)" alt="Hom(X, -)" class="ee_img tr_noresize" eeimg="1">  以及  <img src="https://www.zhihu.com/equation?tex=Hom(-, X)" alt="Hom(-, X)" class="ee_img tr_noresize" eeimg="1">  二者皆是从某个 category 中 morphism 至  <img src="https://www.zhihu.com/equation?tex=Set" alt="Set" class="ee_img tr_noresize" eeimg="1"> ，因此该处可构成一 product category (乘积范畴)，即  <img src="https://www.zhihu.com/equation?tex=C^{op} \times C" alt="C^{op} \times C" class="ee_img tr_noresize" eeimg="1"> ，所以有 functor  <img src="https://www.zhihu.com/equation?tex=Hom(-, -) : C^{op} \times C \to Set" alt="Hom(-, -) : C^{op} \times C \to Set" class="ee_img tr_noresize" eeimg="1"> ：
 
-![](./Yoneda-Lemma-8.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-8.png)
 
 而对于  <img src="https://www.zhihu.com/equation?tex=Set" alt="Set" class="ee_img tr_noresize" eeimg="1">  中  <img src="https://www.zhihu.com/equation?tex=Hom(f,\ h) : Hom(A,\ B) \to Hom(A',\ B')" alt="Hom(f,\ h) : Hom(A,\ B) \to Hom(A',\ B')" class="ee_img tr_noresize" eeimg="1"> ，假设固定任意一边的变元为  <img src="https://www.zhihu.com/equation?tex=id" alt="id" class="ee_img tr_noresize" eeimg="1"> ，那么 morphisms 则为： <img src="https://www.zhihu.com/equation?tex=Hom(id_A,\ h) : Hom(A, B) \to Hom(A, B')" alt="Hom(id_A,\ h) : Hom(A, B) \to Hom(A, B')" class="ee_img tr_noresize" eeimg="1"> ， <img src="https://www.zhihu.com/equation?tex=Hom(f,\ id_B) : Hom(A,\ B) \to Hom(A',\ B)" alt="Hom(f,\ id_B) : Hom(A,\ B) \to Hom(A',\ B)" class="ee_img tr_noresize" eeimg="1"> ， <img src="https://www.zhihu.com/equation?tex=Hom(id_{A'},\ h) : Hom(A', B) \to Hom(A', B')" alt="Hom(id_{A'},\ h) : Hom(A', B) \to Hom(A', B')" class="ee_img tr_noresize" eeimg="1"> ， <img src="https://www.zhihu.com/equation?tex=Hom(f,\ id_{B'}) : Hom(A,\ B') \to Hom(A',\ B')" alt="Hom(f,\ id_{B'}) : Hom(A,\ B') \to Hom(A',\ B')" class="ee_img tr_noresize" eeimg="1"> ，所以会有图：
 
-![](./Yoneda-Lemma-9.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-9.png)
 
 为了证明该图可交换，现在假设有  <img src="https://www.zhihu.com/equation?tex=g \in Hom(A,\ B)" alt="g \in Hom(A,\ B)" class="ee_img tr_noresize" eeimg="1"> ，那么有：
 
-![](./Yoneda-Lemma-10.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-10.png)
 
 最终得出结论： <img src="https://www.zhihu.com/equation?tex=g \mapsto h \circ g \circ f : Hom(A,\ B) \to Hom(A',\ B')" alt="g \mapsto h \circ g \circ f : Hom(A,\ B) \to Hom(A',\ B')" class="ee_img tr_noresize" eeimg="1"> ，因此该图可交换。
 
@@ -146,13 +146,13 @@ Functors： <img src="https://www.zhihu.com/equation?tex=Hom(-, X) : C^{op} \to 
 
 首先定义  <img src="https://www.zhihu.com/equation?tex=A, B \in Obj(C)" alt="A, B \in Obj(C)" class="ee_img tr_noresize" eeimg="1"> ，且有态射  <img src="https://www.zhihu.com/equation?tex=f : A \to B" alt="f : A \to B" class="ee_img tr_noresize" eeimg="1"> ，以及一个任意的 object  <img src="https://www.zhihu.com/equation?tex=X" alt="X" class="ee_img tr_noresize" eeimg="1"> ，因此对于 category  <img src="https://www.zhihu.com/equation?tex=C" alt="C" class="ee_img tr_noresize" eeimg="1"> ，我们有：
 
-![](./Yoneda-Lemma-11.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-11.png)
 
 因此对于任意  <img src="https://www.zhihu.com/equation?tex=X" alt="X" class="ee_img tr_noresize" eeimg="1"> ，我们可以定义出 morphism  <img src="https://www.zhihu.com/equation?tex=- : X \to A" alt="- : X \to A" class="ee_img tr_noresize" eeimg="1">  以及  <img src="https://www.zhihu.com/equation?tex=f \circ - : X \to B" alt="f \circ - : X \to B" class="ee_img tr_noresize" eeimg="1"> 。
 
 而后考虑到有 functor  <img src="https://www.zhihu.com/equation?tex=Hom(X,\ -) : C \to Set" alt="Hom(X,\ -) : C \to Set" class="ee_img tr_noresize" eeimg="1">  和  <img src="https://www.zhihu.com/equation?tex=F : C \to Set" alt="F : C \to Set" class="ee_img tr_noresize" eeimg="1"> ，以及有一自然变换  <img src="https://www.zhihu.com/equation?tex=\alpha : Hom(X, -) \to F" alt="\alpha : Hom(X, -) \to F" class="ee_img tr_noresize" eeimg="1"> ，我们能够得出如下图：
 
-![](./Yoneda-Lemma-12.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-12.png)
 
 所以在 category  <img src="https://www.zhihu.com/equation?tex=Set" alt="Set" class="ee_img tr_noresize" eeimg="1">  中，有<br/>
 Objects： <img src="https://www.zhihu.com/equation?tex=Hom(X,\ A), Hom(X,\ B), F(A), F(B)" alt="Hom(X,\ A), Hom(X,\ B), F(A), F(B)" class="ee_img tr_noresize" eeimg="1"> <br/>
@@ -164,7 +164,7 @@ Objects： <img src="https://www.zhihu.com/equation?tex=Hom(X,\ A), Hom(X,\ B), 
 ### 证明
 为了证明米田引理，可以取出  <img src="https://www.zhihu.com/equation?tex=Hom(X,\ A)" alt="Hom(X,\ A)" class="ee_img tr_noresize" eeimg="1">  中的 identity morphism  <img src="https://www.zhihu.com/equation?tex=id_X" alt="id_X" class="ee_img tr_noresize" eeimg="1">  作为实例，即  <img src="https://www.zhihu.com/equation?tex=Hom(X,\ X)" alt="Hom(X,\ X)" class="ee_img tr_noresize" eeimg="1"> ，所以上图将更变为：
 
-![](./Yoneda-Lemma-13.png)
+![](https://raw.githubusercontent.com/a9032676/Markdown4Zhihu/master/Data/Yoneda-Lemma/Yoneda-Lemma-13.png)
 
 其中包含了  <img src="https://www.zhihu.com/equation?tex=id_X \in Hom(X,\ X)" alt="id_X \in Hom(X,\ X)" class="ee_img tr_noresize" eeimg="1"> ， <img src="https://www.zhihu.com/equation?tex=u \in F(X)" alt="u \in F(X)" class="ee_img tr_noresize" eeimg="1"> ， <img src="https://www.zhihu.com/equation?tex=f \in Hom(X,\ B)" alt="f \in Hom(X,\ B)" class="ee_img tr_noresize" eeimg="1">  以及  <img src="https://www.zhihu.com/equation?tex=\alpha_B\ f \in F(B)" alt="\alpha_B\ f \in F(B)" class="ee_img tr_noresize" eeimg="1"> 。
 
