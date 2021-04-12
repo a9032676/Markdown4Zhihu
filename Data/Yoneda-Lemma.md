@@ -12,10 +12,10 @@
 ## Hom-set (Hom-集合) 
 就函数而言，比方说从 $\Bbb{Z}$ 到 $\Bbb{Z}$ 之间的映射存在的可能不止有仅仅一条函数，它可能还存在着很多不同的函数，诸如 $f,\ g,\ h, ... : \Bbb{Z} \to \Bbb{Z}$ 等等。而由这一束函数所组成的集合，在范畴论中则被称之为 hom-set，即由 morphism(s) 所组成的集合。
 
-由集合作为 object 所组成的 category 则被称之为 category of sets (集合范畴)，它们之间的 morphism(s) 即是 hom-set(s)，因此也可被称为 locally small category (局部小范畴)。
+由集合作为 object 所组成的 category 则被称之为 category of sets (集合范畴)，它们之间的 morphism(s) 所组成的集合即是 hom-set(s)，因此也可被称为 locally small category (局部小范畴)。
 
 ### 定义
-给定 object $x,\ y$ 于 locally small category $C$ 内，hom-set 则是所有从 object $x$ 到 $y$ 的 morphisms 所形成的搜集，记为 $Hom_C(x,\ y)$ （这里的 $C$ 为 category 的名字，或是 $C(x,\ y)$，并且可省略地记为 $Hom(x,\ y)$）。
+给定 object $x,\ y$ 于 locally small category $C$ 内，hom-set 则是所有从 object $x$ 到 $y$ 的 morphisms 所形成的类，记为 $Hom_C(x,\ y)$ （这里的 $C$ 为 category 的名字，或是 $C(x,\ y)$，并且可省略地记为 $Hom(x,\ y)$）。
 
 ### 例子
 设有 category $C$，并且有： <br/>
@@ -23,6 +23,8 @@
 2. Morphisms：$f : a \to b$，$g : a \to b$，$h : a \to b$
 
 ![](./Yoneda-Lemma/Yoneda-Lemma-1.png)
+
+那么对于所有从 object $a$ 到 $b$ 的 morphisms，则记为 $Hom_C(a,\ b)$，因此 $f,\ g,\ h \in Hom_C(a,\ b)$ 。
 
 ## Hom-functor (Hom-函子)
 
@@ -59,10 +61,10 @@
 $obj(C) \to obj(Set)$：$\forall A \in obj(C)，有 A \mapsto Hom(X,\ A)$<br/>
 $mor(C) \to mor(Set)$：$\forall f \in A \to B$，$g : Hom(X,\ A)$，有 $g \mapsto f \circ g$
 
-Covariant hom-functor 本身结构是 $F : C \to Set$，因此也可被称为 representable functor (可表函子) 。
+Covariant hom-functor 本身结构是 $F : C \to Set$，与其同构的 set-valued functor 亦可称为 representable functor (可表函子) 。
 
 ### 证明
-Identity laws：$Hom(X, id_A) = id_A$<br/>
+Identity laws：$Hom(X, id_A) = id_{Hom(X,\ A)}$<br/>
 Composition laws：$Hom(X,\ g \circ f) = Hom(X,\ g) \circ Hom(X,\ f)$
 
 由此可见 covariant hom-functor 满足 functor laws，因此它是一个 functor。
@@ -88,7 +90,7 @@ $mor(C^{op}) \to mor(Set)$：$\forall f \in B \to A$，$g : Hom(A,\ X)$，有 $g
 Contravariant hom-functor 本身结构是 $F : C^{op} \to Set$，于拓扑里有另外一个名字，称之为 presheaf (预层) 。
 
 ### 证明
-Identity laws：$Hom(id_A, X) = id_A$<br/>
+Identity laws：$Hom(id_A, X) = id_{Hom(A,\ X)}$<br/>
 Composition laws：$Hom(g \circ f,\ X) = Hom(g,\ X) \circ Hom(f,\ X)$
 
 由此可见 contravariant hom-functor 满足 functor laws，因此它是一个 functor。
@@ -175,6 +177,78 @@ $fromYoneda$：$u : F(\varphi)$，有 $\alpha_\varphi\ f = (F\ f)\ u$
 至此证毕。
 
 #### 于 Agda 中的表达
+
+首先定义出 category 的概念，当中包含了 `Obj` (object)，`_⇒_`（morphism），id（identity）以及 `_∘_`（composition of morphisms）：
+
+```
+record Category (o m : Level) : Set (suc (o ⊔ m)) where
+  eta-equality
+  infixr 20 _∘_
+  field
+    Obj  : Set o
+    _⇒_ : Rel Obj m
+    id   : ∀ {A} → A ⇒ A
+    _∘_  : ∀ {A B C} → (B ⇒ C) → (A ⇒ B) → (A ⇒ C)
+```
+
+然后是 functor，有 $F_O : obj(C) \to obj(D)$ （object(s) 之间的 morphism(s)） 跟 $F_m : mor(C) \to mor(D)$ （morphism(s) 之间的 morphism(s)）：
+
+```
+record Functor (C : Category o m) (D : Category o' m') : Set (o ⊔ m ⊔ o' ⊔ m') where
+  eta-equality
+  private module C = Category C
+  private module D = Category D
+  field
+    Fₒ : C.Obj → D.Obj
+    Fₘ : ∀ {A B : C.Obj} → (A C.⇒ B) → (Fₒ A D.⇒ Fₒ B)
+```
+
+以及 natural transformation，有 $\eta : F(X) \to G(X)$：
+
+```
+record NaturalTransformation
+  (C : Category o m) (D : Category o' m')
+  (F G : Functor C D) : Set (o ⊔ m ⊔ o' ⊔ m') where
+  open Functor F using (Fₒ)
+  open Category D using (_⇒_)
+  private module G = Functor G
+  field
+    η : ∀ {X} → Fₒ X ⇒ G.Fₒ X
+
+syntax NaturalTransformation C D F G = [ C , D ]⟨ F , G ⟩
+```
+
+接下来，由于 Yoneda lemma 的证明过程需要用到 category of set 以及 covariant hom-functor 的定义，因此有：
+
+```
+𝒮ℯ𝓉 : (o : Level) → Category (suc o) o
+𝒮ℯ𝓉 o = record
+  { Obj  = Set o
+  ; _⇒_ = λ A B → (A → B)
+  ; id   = λ x → x
+  ; _∘_  = λ x y z → x (y z)
+  }
+```
+
+以及
+
+```
+Representablefunctor : (Category o m) → Set (o ⊔ suc m)
+Representablefunctor {_} {m} C = Functor C (𝒮ℯ𝓉 m)
+
+-- Covariant hom-functor
+-- Hom(X, ─) : C → Set
+CovariantHomfunctor : (C : Category o m) (X : Obj C) → Representablefunctor C
+CovariantHomfunctor (record { _⇒_ = _⇒_ ;  _∘_ = _∘_ }) X = record
+  { Fₒ = λ ─ → X ⇒ ─
+  ; Fₘ = _∘_
+  }
+
+syntax CovariantHomfunctor C X = Hom C [ X ,─]
+```
+
+那么最终我们能够得出 Yoneda lemma 的证明：
+
 ```
 toYoneda : (C : Category o m) {X : Obj C} {F : Functor C (𝒮ℯ𝓉 m)}
            → [ C , 𝒮ℯ𝓉 m ]⟨ Hom C [ X ,─] , F ⟩
@@ -193,10 +267,11 @@ fromYoneda
   = record { η = λ f → (Fₘ f) u }
 ```
 
-注：该部分只写出了最终的证明步骤，需要查看详尽的前置定义及源码可移步至 [这里](http://home.e7mc.com:12450/9032676/category-research)。
+注：该部分只列出了对证明较为重要的前置定义以及步骤，需要查看详尽的前置定义及源码可移步至 [这里](http://home.e7mc.com:12450/9032676/category-research)。
 
 #### 于 Haskell 中表达
-```
+
+```haskell
 toYoneda :: (forall a. (x -> a) -> f a) -> f x
 toYoneda alpha = alpha id
 
